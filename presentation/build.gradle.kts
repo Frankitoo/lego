@@ -56,18 +56,4 @@ dependencies {
     implementation(Koin.viewModel)
 
     implementation(Deps.glide)
-    // Test
-    testImplementation(Test.kotlin)
-    testImplementation(Test.coroutines)
-    testImplementation(Test.junit)
-    testImplementation(Test.mockk)
-    testImplementation(Test.truth)
-    testImplementation(Test.robolectric)
-    testImplementation(Test.timber)
-
-    testImplementation(Test.AndroidX.core)
-    testImplementation(Test.AndroidX.runner)
-    testImplementation(Test.AndroidX.rules)
-    testImplementation(Test.AndroidX.androidJunit)
-    testImplementation(Test.AndroidX.androidTruth)
 }

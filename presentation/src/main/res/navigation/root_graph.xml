@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rootGraph"
-    app:startDestination="@id/PokemonPagerFragment">
+    app:startDestination="@id/home">
     <fragment
-        android:id="@+id/PokemonPagerFragment"
-        android:name="com.frankito.presentation.features.pokemonpager.PokemonPagerFragment"
-        tools:layout="@layout/fragment_pokemon_pager">
+        android:id="@+id/home"
+        android:name="com.frankito.presentation.features.home.HomeFragment"
+        tools:layout="@layout/fragment_home">
     </fragment>
 </navigation>

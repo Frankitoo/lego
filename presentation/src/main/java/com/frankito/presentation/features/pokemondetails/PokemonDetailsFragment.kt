@@ -123,13 +123,13 @@ class PokemonDetailsFragment : BaseFragment<PokemonDetailsViewModel>() {
 
     private fun setupAbilities(abilities: List<String>) {
         if (abilities.isNotEmpty()) {
-            tvAbilities.text = getString(R.string.abilities)
+            tvSpecial.text = getString(R.string.abilities)
             rvAbilities.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             rvAbilities.adapter = AbilityAdapter(abilities)
             rvAbilities.visibility = View.VISIBLE
         } else {
-            tvAbilities.text = getString(R.string.no_abilities)
+            tvSpecial.text = getString(R.string.no_abilities)
             rvAbilities.visibility = View.GONE
         }
     }

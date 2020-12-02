@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Poke</string>
+    <string name="action_settings">Settings</string>
+    <string name="back_button_image_description">backButtonImage</string>
+</resources>

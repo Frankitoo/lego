@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="common_network_unavailable">Network unavailable. Please check your connection.</string>
+    <string name="retry">Retry</string>
+    <string name="pokemon_header_image">Pokemon header image</string>
+    <string name="type">Type</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
+    <string name="experience">Experience</string>
+    <string name="abilities">Abilities</string>
+    <string name="no_abilities">No Abilities</string>
+</resources>

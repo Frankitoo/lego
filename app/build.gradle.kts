@@ -4,6 +4,7 @@ plugins {
     kotlin("kapt")
     id("kotlin-android-extensions")
     id("androidx.navigation.safeargs.kotlin")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -11,13 +12,11 @@ android {
     buildToolsVersion = "30.0.2"
 
     defaultConfig {
-        applicationId = "com.frankito.poke"
+        applicationId = "com.frankitoo.lego"
         minSdkVersion(Versions.App.minSdkVersion)
         targetSdkVersion(Versions.App.targetSdkVersion)
         versionCode = 1
         versionName = "1.0"
-
-        buildConfigField("String", "BASE_URL", "\"https://pokeapi.co/api/v2/\"")
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -56,6 +55,11 @@ dependencies {
     implementation(AndroidX.coreKtx)
     implementation(AndroidX.constraintLayout)
 
+    implementation(platform(Firebase.firebaseBom))
+    implementation(Firebase.analytics)
+    implementation(Firebase.storage)
+    implementation(Firebase.fireStore)
+
     implementation(AndroidX.Lifecycle.runtime)
     implementation(AndroidX.Lifecycle.extensions)
     implementation(AndroidX.Lifecycle.viewmodel)
@@ -63,6 +67,9 @@ dependencies {
     implementation(AndroidX.Lifecycle.livedataCoreKtx)
     implementation(AndroidX.Lifecycle.livedataKtx)
     implementation(AndroidX.Lifecycle.viewmodelKtx)
+    implementation(AndroidX.Lifecycle.kotlinXCoroutinesCore)
+    implementation(AndroidX.Lifecycle.kotlinXCoroutinesAndroid)
+    implementation(AndroidX.Lifecycle.kotlinXCoroutinesPlayServices)
 
     implementation(AndroidX.Navigation.navigationUI)
     implementation(AndroidX.Navigation.navigationFragment)

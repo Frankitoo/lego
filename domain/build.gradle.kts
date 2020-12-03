@@ -26,9 +26,15 @@ dependencies {
     implementation(Deps.coroutines)
     implementation(AndroidX.Paging.runtime)
     implementation(AndroidX.Paging.common)
+    implementation(AndroidX.Lifecycle.kotlinXCoroutinesCore)
+    implementation(AndroidX.Lifecycle.kotlinXCoroutinesAndroid)
+    implementation(AndroidX.Lifecycle.kotlinXCoroutinesPlayServices)
     // Room
     implementation(Room.runtime)
     implementation(Room.compiler)
     implementation(Room.ktx)
     kapt(Room.compiler)
+
+    implementation(platform(Firebase.firebaseBom))
+    implementation(Firebase.fireStore)
 }

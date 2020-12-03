@@ -35,6 +35,9 @@ dependencies {
     implementation(AndroidX.Lifecycle.livedataCoreKtx)
     implementation(AndroidX.Lifecycle.livedataKtx)
     implementation(AndroidX.Lifecycle.viewmodelKtx)
+    implementation(AndroidX.Lifecycle.kotlinXCoroutinesCore)
+    implementation(AndroidX.Lifecycle.kotlinXCoroutinesAndroid)
+    implementation(AndroidX.Lifecycle.kotlinXCoroutinesPlayServices)
 
     implementation(Deps.timber)
 
@@ -50,6 +53,12 @@ dependencies {
     implementation(Room.compiler)
     implementation(Room.ktx)
     kapt(Room.compiler)
+
+    // Firebase
+    implementation(platform(Firebase.firebaseBom))
+    implementation(Firebase.analytics)
+    implementation(Firebase.storage)
+    implementation(Firebase.fireStore)
 
     // REST
     implementation(Networking.OkHttp.okhttp)

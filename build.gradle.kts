@@ -9,6 +9,7 @@ buildscript {
         classpath(kotlin("gradle-plugin", version = Versions.kotlinVersion))
         classpath(kotlin("serialization", version = Versions.kotlinVersion))
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.androidNavigation}")
+        classpath ("com.google.gms:google-services:4.3.4")
     }
 }
 

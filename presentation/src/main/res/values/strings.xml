@@ -15,4 +15,8 @@
     <string name="weapons">Weapons</string>
     <string name="bricks">Bricks</string>
     <string name="rules">Rules</string>
+    <string name="skills">Skills</string>
+    <string name="defense">Defense</string>
+    <string name="speed">Speed</string>
+    <string name="attack">Attack</string>
 </resources>

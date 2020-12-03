@@ -6,7 +6,39 @@
     app:startDestination="@id/home">
     <fragment
         android:id="@+id/home"
-        android:name="com.frankito.presentation.features.home.HomeFragment"
+        android:name="com.frankitoo.presentation.features.home.HomeFragment"
         tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/toCharacterList"
+            app:destination="@+id/characterList" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/characterList"
+        android:name="com.frankitoo.presentation.features.characterlist.CharacterListFragment"
+        tools:layout="@layout/fragment_character_list">
+
+        <action
+            android:id="@+id/toCharacterList"
+            app:destination="@+id/characterList">
+
+            <argument
+                android:name="characterId"
+                app:argType="string" />
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/characterDetails"
+        android:name="com.frankitoo.presentation.features.characterdetails.CharacterDetailsFragment"
+        tools:layout="@layout/fragment_character_details">
+
+        <argument
+            android:name="characterId"
+            app:argType="string" />
+
     </fragment>
 </navigation>

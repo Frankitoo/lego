@@ -56,4 +56,9 @@ dependencies {
     implementation(Koin.viewModel)
 
     implementation(Deps.glide)
+
+    implementation(platform(Firebase.firebaseBom))
+    implementation(Firebase.fireStore)
+    implementation(Firebase.storage)
+    implementation(Firebase.analytics)
 }

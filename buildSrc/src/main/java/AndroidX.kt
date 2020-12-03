@@ -30,6 +30,9 @@ sealed class AndroidX {
             "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.androidArchitecture}"
         const val viewmodelKtx =
             "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.androidArchitecture}"
+        const val kotlinXCoroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlinxcoroutines}"
+        const val kotlinXCoroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.kotlinxcoroutines}"
+        const val kotlinXCoroutinesPlayServices = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:${Versions.kotlinxcoroutines}"
     }
 
     object Paging {

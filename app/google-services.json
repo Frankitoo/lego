@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "123831389735",
+    "firebase_url": "https://lego-53c92.firebaseio.com",
+    "project_id": "lego-53c92",
+    "storage_bucket": "lego-53c92.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:123831389735:android:e7bf6101ca672543634802",
+        "android_client_info": {
+          "package_name": "com.frankitoo.lego"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "123831389735-ooekngfd57momkv03pkodqridgcpkpjt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFjovTCAufkQk05-dMWFVApwbfFfzFbzo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "123831389735-ooekngfd57momkv03pkodqridgcpkpjt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

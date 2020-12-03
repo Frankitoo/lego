@@ -14,11 +14,14 @@ object Versions {
     const val constraintLayout = "2.0.4"
     const val androidNavigation = "2.3.1"
     const val androidMaterial = "1.2.1"
+    const val kotlinxcoroutines = "1.4.2"
 
     const val coroutinesVersion = "1.4.1"
     const val roomVersion = "2.3.0-alpha02"
 
     const val koin = "2.1.6"
+
+    const val firebaseBom = "26.1.0"
 
     const val okhttp = "4.9.0"
     const val retrofit = "2.9.0"

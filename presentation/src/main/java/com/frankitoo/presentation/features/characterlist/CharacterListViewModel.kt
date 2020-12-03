@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.Flow
 class CharacterListViewModel(
     private val characterRepository: CharacterRepository
 ) : BaseViewModel() {
+    
     fun fetchCharacters(): Flow<PagingData<Character>> {
         return characterRepository.fetchCharacters().cachedIn(viewModelScope)
     }

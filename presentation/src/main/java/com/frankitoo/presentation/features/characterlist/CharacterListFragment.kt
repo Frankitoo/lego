@@ -1,13 +1,13 @@
 package com.frankitoo.presentation.features.characterlist
 
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.frankitoo.presentation.R
 import com.frankitoo.presentation.base.BaseFragment
 import com.frankitoo.presentation.utils.GridSpacingItemDecoration
 import kotlinx.android.synthetic.main.fragment_character_list.rvCharacters
-import kotlinx.android.synthetic.main.fragment_character_list.swipe_refresh
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -31,20 +31,24 @@ class CharacterListFragment : BaseFragment<CharacterListViewModel>() {
 
     override fun setupViews() {
         initAdapter()
-        swipe_refresh.setOnRefreshListener { characterListAdapter.refresh() }
     }
 
     private fun initAdapter() {
         characterListAdapter.onClickListener =
             { item ->
                 lifecycleScope.launchWhenCreated {
-                    // TODO navigálás
+                    item.id?.let {
+                        findNavController().navigate(CharacterListFragmentDirections.toCharacterDetails(it))
+                    }
                 }
             }
 
         rvCharacters.addItemDecoration(gridDecoration)
         rvCharacters.layoutManager = GridLayoutManager(activity, SPAN_COUNT)
-        rvCharacters.adapter = characterListAdapter
+        rvCharacters.adapter = characterListAdapter.withLoadStateHeaderAndFooter(
+            header = CharacterLoadingAdapter { characterListAdapter.retry() },
+            footer = CharacterLoadingAdapter { characterListAdapter.retry() }
+        )
 
         lifecycleScope.launchWhenStarted {
             viewModel.fetchCharacters().collectLatest { pagingData ->

@@ -15,6 +15,7 @@ import com.frankitoo.presentation.R
 import com.frankitoo.presentation.features.characterlist.CharacterListFragment.Companion.SPAN_COUNT
 import com.frankitoo.presentation.utils.WindowHelper
 import com.frankitoo.presentation.utils.debounce.setOnClickListener
+import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.item_character.view.imageView
 import kotlinx.android.synthetic.main.item_character.view.tvName
 
@@ -71,13 +72,18 @@ class CharacterListAdapter :
             lp.height = imageWidth
             imageView.layoutParams = lp
 
-            val factory = DrawableCrossFadeFactory.Builder().setCrossFadeEnabled(true).build()
-            Glide.with(itemView.context)
-                .load(character.imageUrl)
-                .fitCenter()
-                .placeholder(R.drawable.pokeball)
-                .transition(withCrossFade(factory))
-                .into(imageView)
+            val storageRef = FirebaseStorage.getInstance().reference
+            character.imageUrl?.let {
+                storageRef.child(it).downloadUrl.addOnSuccessListener { downloadUrl ->
+                    val factory = DrawableCrossFadeFactory.Builder().setCrossFadeEnabled(true).build()
+                    Glide.with(itemView.context)
+                        .load(downloadUrl)
+                        .fitCenter()
+                        .placeholder(R.drawable.loader)
+                        .transition(withCrossFade(factory))
+                        .into(imageView)
+                }
+            }
         }
     }
 }

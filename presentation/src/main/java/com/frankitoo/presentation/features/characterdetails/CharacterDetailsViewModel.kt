@@ -8,7 +8,6 @@ import kotlinx.coroutines.flow.collect
 class CharacterDetailsViewModel(
     private val characterRepository: CharacterRepository,
 ) : BaseViewModel() {
-
     val character by liveData<Character> {
         val id = arguments.value?.let { CharacterDetailsFragmentArgs.fromBundle(it) }?.characterId
         id?.let {

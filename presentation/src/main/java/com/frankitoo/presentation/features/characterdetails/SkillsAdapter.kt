@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.frankitoo.presentation.R
-import kotlinx.android.synthetic.main.item_ability.view.tvAbility
+import kotlinx.android.synthetic.main.item_skill.view.tvSkill
 
 class SkillsAdapter(private val skills: List<String>) :
     RecyclerView.Adapter<SkillsAdapter.ViewHolder>() {
@@ -21,10 +21,10 @@ class SkillsAdapter(private val skills: List<String>) :
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val tvAbility: TextView = itemView.tvAbility
+        private val tvSkill: TextView = itemView.tvSkill
 
         fun bindView(skill: String) {
-            tvAbility.text = skill
+            tvSkill.text = skill
         }
     }
 

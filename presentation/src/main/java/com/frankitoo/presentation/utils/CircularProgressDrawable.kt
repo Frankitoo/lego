@@ -13,7 +13,7 @@ internal fun getCircularProgressDrawable(context: Context): CircularProgressDraw
     circularProgressDrawable.setColorFilter(
         ContextCompat.getColor(
             context,
-            R.color.pokemon_blue
+            R.color.light_yellow
         ), PorterDuff.Mode.SRC_ATOP
     )
     circularProgressDrawable.start()

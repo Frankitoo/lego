@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class Character(
     @PrimaryKey
-    val id: Int,
+    var id: String? = null,
     val name: String? = null,
     val attack: String? = null,
     val defense: String? = null,

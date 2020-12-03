@@ -19,6 +19,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
+    configurations {
+        implementation.get().exclude(mapOf("group" to "org.jetbrains", "module" to "annotations"))
+    }
 }
 
 dependencies {
@@ -56,6 +60,8 @@ dependencies {
     implementation(Koin.viewModel)
 
     implementation(Deps.glide)
+    implementation(Deps.glideAnnotations)
+    kapt(Deps.glideCompiler)
 
     implementation(platform(Firebase.firebaseBom))
     implementation(Firebase.fireStore)

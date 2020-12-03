@@ -8,5 +8,7 @@ sealed class Deps {
         const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 
         const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
+        const val glideAnnotations = "com.github.bumptech.glide:annotations:${Versions.glide}"
+        const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
     }
 }

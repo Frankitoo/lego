@@ -6,9 +6,12 @@ import androidx.paging.PagingData
 import com.frankitoo.domain.models.character.Character
 import com.frankitoo.domain.repositories.CharacterRepository
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.callbackFlow
 
-class CharacterRepositoryImpl : CharacterRepository {
+class CharacterRepositoryImpl(private val db: FirebaseFirestore) : CharacterRepository {
 
     companion object {
         const val CHARACTERS = "characters"
@@ -16,13 +19,22 @@ class CharacterRepositoryImpl : CharacterRepository {
 
     override fun fetchCharacters(): Flow<PagingData<Character>> {
         return Pager(
-            PagingConfig(pageSize = 20, enablePlaceholders = false, prefetchDistance = 6)
+            PagingConfig(pageSize = 20, enablePlaceholders = true, prefetchDistance = 6)
         ) {
             CharacterPagingSource(FirebaseFirestore.getInstance())
         }.flow
     }
 
-    override suspend fun fetchCharacter(name: String): Flow<Character> {
-        TODO("Not yet implemented")
+    @ExperimentalCoroutinesApi
+    override suspend fun fetchCharacter(id: String): Flow<Character> = callbackFlow {
+        val subscription = db.collection(CHARACTERS).document(id).addSnapshotListener { snapshot, _ ->
+            if (snapshot!!.exists()) {
+                val character = snapshot.toObject(Character::class.java)
+                character?.let {
+                    offer(character)
+                }
+            }
+        }
+        awaitClose { subscription.remove() }
     }
 }

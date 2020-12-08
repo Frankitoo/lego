@@ -1,9 +1,10 @@
-package com.frankitoo.data.repositories
+package com.frankitoo.data.repositories.character
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.frankitoo.domain.models.character.Character
+import com.frankitoo.data.repositories.weapon.getPagingSource
+import com.frankitoo.domain.models.lego.character.Character
 import com.frankitoo.domain.repositories.CharacterRepository
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -21,7 +22,7 @@ class CharacterRepositoryImpl(private val db: FirebaseFirestore) : CharacterRepo
         return Pager(
             PagingConfig(pageSize = 20, enablePlaceholders = true, prefetchDistance = 6)
         ) {
-            CharacterPagingSource(FirebaseFirestore.getInstance())
+            getPagingSource<Character>(FirebaseFirestore.getInstance(), CHARACTERS)
         }.flow
     }
 

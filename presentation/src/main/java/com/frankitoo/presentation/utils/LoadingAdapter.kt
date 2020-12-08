@@ -1,4 +1,4 @@
-package com.frankitoo.presentation.features.characterlist
+package com.frankitoo.presentation.utils
 
 import android.view.LayoutInflater
 import android.view.View
@@ -11,19 +11,18 @@ import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.frankitoo.presentation.R
-import com.frankitoo.presentation.utils.startRotatedAnimation
 import kotlinx.android.synthetic.main.item_loading_state.view.btnRetry
 import kotlinx.android.synthetic.main.item_loading_state.view.legoHeadLoaderImage
 import kotlinx.android.synthetic.main.item_loading_state.view.tvErrorMessage
 
-class CharacterLoadingAdapter(private val retry: () -> Unit) :
-    LoadStateAdapter<CharacterLoadingAdapter.LoadingStateViewHolder>() {
+class LoadingAdapter(private val retry: () -> Unit) :
+    LoadStateAdapter<LoadingAdapter.LoadingStateViewHolder>() {
 
     class LoadingStateViewHolder(itemView: View, retry: () -> Unit) :
         RecyclerView.ViewHolder(itemView) {
 
         private val tvErrorMessage: TextView = itemView.tvErrorMessage
-        private val pokeBallLoaderImage: ImageView = itemView.legoHeadLoaderImage
+        private val legoHeadLoaderImage: ImageView = itemView.legoHeadLoaderImage
         private val btnRetry: Button = itemView.btnRetry
 
         init {
@@ -33,13 +32,13 @@ class CharacterLoadingAdapter(private val retry: () -> Unit) :
         }
 
         fun bindState(loadState: LoadState) {
-            pokeBallLoaderImage.isVisible = false
+            legoHeadLoaderImage.isVisible = false
             if (loadState is LoadState.Error) {
                 tvErrorMessage.text = loadState.error.localizedMessage
             }
             if (loadState is LoadState.Loading) {
-                pokeBallLoaderImage.isVisible = true
-                pokeBallLoaderImage.startRotatedAnimation(itemView.context)
+                legoHeadLoaderImage.isVisible = true
+                legoHeadLoaderImage.startRotatedAnimation(itemView.context)
             }
             tvErrorMessage.isVisible = loadState !is LoadState.Loading
             btnRetry.isVisible = loadState !is LoadState.Loading

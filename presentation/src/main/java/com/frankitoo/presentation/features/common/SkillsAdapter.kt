@@ -1,4 +1,4 @@
-package com.frankitoo.presentation.features.characterdetails
+package com.frankitoo.presentation.features.common
 
 import android.view.LayoutInflater
 import android.view.View

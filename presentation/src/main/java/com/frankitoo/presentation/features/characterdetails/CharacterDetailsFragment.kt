@@ -1,21 +1,28 @@
 package com.frankitoo.presentation.features.characterdetails
 
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.transition.DrawableCrossFadeFactory
-import com.frankitoo.domain.models.character.Character
+import com.frankitoo.domain.models.lego.character.Character
 import com.frankitoo.presentation.R
 import com.frankitoo.presentation.base.BaseFragment
+import com.frankitoo.presentation.features.common.SkillsAdapter
 import com.frankitoo.presentation.utils.fadeOut
 import com.frankitoo.presentation.utils.getCircularProgressDrawable
 import com.frankitoo.presentation.utils.startRotatedAnimation
 import com.google.firebase.storage.FirebaseStorage
+import kotlinx.android.synthetic.main.fragment_character_details.attackLayout
+import kotlinx.android.synthetic.main.fragment_character_details.defenseLayout
 import kotlinx.android.synthetic.main.fragment_character_details.imageView
 import kotlinx.android.synthetic.main.fragment_character_details.loaderImage
 import kotlinx.android.synthetic.main.fragment_character_details.loaderLayout
 import kotlinx.android.synthetic.main.fragment_character_details.rvSkills
+import kotlinx.android.synthetic.main.fragment_character_details.skillsLayout
+import kotlinx.android.synthetic.main.fragment_character_details.specialCard
+import kotlinx.android.synthetic.main.fragment_character_details.speedLayout
 import kotlinx.android.synthetic.main.fragment_character_details.tvAttackValue
 import kotlinx.android.synthetic.main.fragment_character_details.tvDefenseValue
 import kotlinx.android.synthetic.main.fragment_character_details.tvName
@@ -63,25 +70,40 @@ class CharacterDetailsFragment : BaseFragment<CharacterDetailsViewModel>() {
 
         setupStats(character)
         setupSkills(character.skills)
+        setupSpecial(character)
     }
 
     private fun setupStats(character: Character) {
         tvName.text = character.name
-        tvAttackValue.text = character.attack.toString()
-        tvDefenseValue.text = character.defense.toString()
-        tvSpeedValue.text = character.speed.toString()
+        attackLayout.isVisible = !character.attack.isNullOrEmpty()
+        if (character.attack != null) {
+            tvAttackValue.text = character.attack.toString()
+        }
+        defenseLayout.isVisible = !character.defense.isNullOrEmpty()
+        if (character.defense != null) {
+            tvDefenseValue.text = character.defense.toString()
+        }
+        speedLayout.isVisible = !character.speed.isNullOrEmpty()
+        if (character.speed != null) {
+            tvSpeedValue.text = character.speed.toString()
+        }
     }
 
     private fun setupSkills(skills: List<String>) {
         if (skills.isNotEmpty()) {
-            tvSpecial.text = getString(R.string.abilities)
             rvSkills.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             rvSkills.adapter = SkillsAdapter(skills)
-            rvSkills.visibility = View.VISIBLE
+            skillsLayout.visibility = View.VISIBLE
         } else {
-            tvSpecial.text = getString(R.string.no_abilities)
-            rvSkills.visibility = View.GONE
+            skillsLayout.visibility = View.GONE
+        }
+    }
+
+    private fun setupSpecial(character: Character) {
+        specialCard.isVisible = !character.special.isNullOrEmpty()
+        if (character.special != null) {
+            tvSpecial.text = character.special
         }
     }
 }

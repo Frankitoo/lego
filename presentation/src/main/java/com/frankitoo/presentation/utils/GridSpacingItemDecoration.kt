@@ -1,13 +1,23 @@
 package com.frankitoo.presentation.utils
 
+import android.content.Context
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.frankitoo.presentation.R
+import com.frankitoo.presentation.features.weaponlist.WeaponListFragment
 
-class GridSpacingItemDecoration(private val spanCount: Int,
+fun getGridDecoration(context: Context): RecyclerView.ItemDecoration {
+    return GridSpacingItemDecoration(
+        WeaponListFragment.SPAN_COUNT, context.resources.getDimension(R.dimen.margin_grid).toInt(), false
+    )
+}
+
+class GridSpacingItemDecoration(
+    private val spanCount: Int,
     private val spacing: Int,
-    private val includeEdge: Boolean = false)
-    : RecyclerView.ItemDecoration() {
+    private val includeEdge: Boolean = false
+) : RecyclerView.ItemDecoration() {
 
     override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
         val position = parent.getChildAdapterPosition(view)

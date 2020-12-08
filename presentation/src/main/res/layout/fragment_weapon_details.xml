@@ -49,7 +49,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="Character Name" />
+                tools:text="Weapon Name" />
 
             <LinearLayout
                 android:id="@+id/skillsLayout"
@@ -308,6 +308,7 @@
                         android:layout_marginBottom="16dp"
 
                         android:fontFamily="sans-serif-smallcaps"
+                        android:text="@string/abilities"
                         android:textAllCaps="false"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                         android:textColor="@color/black"
@@ -346,3 +347,4 @@
             android:src="@drawable/loader" />
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+

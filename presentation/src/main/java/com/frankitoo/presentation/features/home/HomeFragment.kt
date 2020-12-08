@@ -4,6 +4,7 @@ import androidx.navigation.fragment.findNavController
 import com.frankitoo.presentation.R
 import com.frankitoo.presentation.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_home.charactersCard
+import kotlinx.android.synthetic.main.fragment_home.weaponsCard
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class HomeFragment : BaseFragment<HomeViewModel>() {
@@ -15,6 +16,9 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
     override fun setupViews() {
         charactersCard.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.toCharacterList())
+        }
+        weaponsCard.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.toWeaponList())
         }
     }
 }

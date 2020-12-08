@@ -1,12 +1,13 @@
-package com.frankitoo.domain.models.character
+package com.frankitoo.domain.models.lego.weapon
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.frankitoo.domain.models.lego.Item
 
 @Entity
-data class Character(
+data class Weapon(
     @PrimaryKey
-    var id: String? = null,
+    override var id: String? = null,
     val name: String? = null,
     val attack: String? = null,
     val defense: String? = null,
@@ -14,4 +15,4 @@ data class Character(
     val special: String? = null,
     val skills: List<String> = emptyList(),
     val imageUrl: String? = null,
-)
+) : Item

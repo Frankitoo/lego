@@ -1,4 +1,4 @@
-package com.frankitoo.domain.models.character
+package com.frankitoo.domain.models.lego.character
 
 data class Skill(
     val name: String? = null,

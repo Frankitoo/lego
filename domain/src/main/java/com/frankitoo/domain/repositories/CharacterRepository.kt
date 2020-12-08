@@ -1,7 +1,7 @@
 package com.frankitoo.domain.repositories
 
 import androidx.paging.PagingData
-import com.frankitoo.domain.models.character.Character
+import com.frankitoo.domain.models.lego.character.Character
 import kotlinx.coroutines.flow.Flow
 
 interface CharacterRepository {

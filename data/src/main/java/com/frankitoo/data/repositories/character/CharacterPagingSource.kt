@@ -1,8 +1,8 @@
-package com.frankitoo.data.repositories
+package com.frankitoo.data.repositories.character
 
 import androidx.paging.PagingSource
-import com.frankitoo.data.repositories.CharacterRepositoryImpl.Companion.CHARACTERS
-import com.frankitoo.domain.models.character.Character
+import com.frankitoo.data.repositories.character.CharacterRepositoryImpl.Companion.CHARACTERS
+import com.frankitoo.domain.models.lego.character.Character
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.coroutines.tasks.await

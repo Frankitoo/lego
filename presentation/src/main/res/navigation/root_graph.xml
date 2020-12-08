@@ -17,12 +17,20 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
 
+        <action
+            android:id="@+id/toWeaponList"
+            app:destination="@+id/weaponList"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
     </fragment>
 
     <fragment
         android:id="@+id/characterList"
         android:name="com.frankitoo.presentation.features.characterlist.CharacterListFragment"
-        tools:layout="@layout/fragment_character_list">
+        tools:layout="@layout/fragment_list">
 
         <action
             android:id="@+id/toCharacterDetails"
@@ -46,6 +54,37 @@
 
         <argument
             android:name="characterId"
+            app:argType="string" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/weaponList"
+        android:name="com.frankitoo.presentation.features.weaponlist.WeaponListFragment"
+        tools:layout="@layout/fragment_list">
+
+        <action
+            android:id="@+id/toWeaponDetails"
+            app:destination="@+id/weaponDetails"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
+
+            <argument
+                android:name="weaponId"
+                app:argType="string" />
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/weaponDetails"
+        android:name="com.frankitoo.presentation.features.weapondetails.WeaponDetailsFragment"
+        tools:layout="@layout/fragment_weapon_details">
+
+        <argument
+            android:name="weaponId"
             app:argType="string" />
 
     </fragment>

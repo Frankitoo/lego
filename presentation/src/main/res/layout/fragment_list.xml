@@ -19,5 +19,5 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="RtlSymmetry"
         tools:itemCount="10"
-        tools:listitem="@layout/item_character" />
+        tools:listitem="@layout/item_image_with_text" />
 </androidx.constraintlayout.widget.ConstraintLayout>

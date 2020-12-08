@@ -3,9 +3,11 @@ package com.frankitoo.presentation.features.characterlist
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.frankitoo.domain.models.lego.character.Character
 import com.frankitoo.presentation.R
 import com.frankitoo.presentation.base.BaseFragment
 import com.frankitoo.presentation.utils.LoadingAdapter
+import com.frankitoo.presentation.utils.PagingGridListAdapter
 import com.frankitoo.presentation.utils.getGridDecoration
 import kotlinx.android.synthetic.main.fragment_list.recyclerView
 import kotlinx.coroutines.flow.collectLatest
@@ -21,7 +23,7 @@ class CharacterListFragment : BaseFragment<CharacterListViewModel>() {
 
     override val viewModel: CharacterListViewModel by viewModel()
 
-    private val characterListAdapter = CharacterListAdapter()
+    private val characterListAdapter = PagingGridListAdapter<Character>(SPAN_COUNT)
 
     override fun setupViews() {
         initAdapter()
@@ -37,7 +39,7 @@ class CharacterListFragment : BaseFragment<CharacterListViewModel>() {
                 }
             }
 
-        recyclerView.addItemDecoration(getGridDecoration(requireContext())) 
+        recyclerView.addItemDecoration(getGridDecoration(SPAN_COUNT, requireContext()))
         recyclerView.layoutManager = GridLayoutManager(activity, SPAN_COUNT)
         recyclerView.adapter = characterListAdapter.withLoadStateHeaderAndFooter(
             header = LoadingAdapter { characterListAdapter.retry() },

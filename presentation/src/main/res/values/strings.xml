@@ -20,4 +20,6 @@
     <string name="speed">Speed</string>
     <string name="attack">Attack</string>
     <string name="special">Special</string>
+    <string name="capacity">Capacity</string>
+    <string name="description">Description</string>
 </resources>

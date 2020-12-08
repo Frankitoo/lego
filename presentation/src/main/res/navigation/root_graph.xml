@@ -25,6 +25,22 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
 
+        <action
+            android:id="@+id/toVehicleList"
+            app:destination="@+id/vehicleList"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/toQuestList"
+            app:destination="@+id/questList"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
     </fragment>
 
     <fragment
@@ -85,6 +101,68 @@
 
         <argument
             android:name="weaponId"
+            app:argType="string" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/vehicleList"
+        android:name="com.frankitoo.presentation.features.vehiclelist.VehicleListFragment"
+        tools:layout="@layout/fragment_list">
+
+        <action
+            android:id="@+id/toVehicleDetails"
+            app:destination="@+id/vehicleDetails"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
+
+            <argument
+                android:name="vehicleId"
+                app:argType="string" />
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/vehicleDetails"
+        android:name="com.frankitoo.presentation.features.vehicledetails.VehicleDetailsFragment"
+        tools:layout="@layout/fragment_vehicle_details">
+
+        <argument
+            android:name="vehicleId"
+            app:argType="string" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/questList"
+        android:name="com.frankitoo.presentation.features.questlist.QuestListFragment"
+        tools:layout="@layout/fragment_list">
+
+        <action
+            android:id="@+id/toQuestDetails"
+            app:destination="@+id/questDetails"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
+
+            <argument
+                android:name="questId"
+                app:argType="string" />
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/questDetails"
+        android:name="com.frankitoo.presentation.features.questdetails.QuestDetailsFragment"
+        tools:layout="@layout/fragment_quest_details">
+
+        <argument
+            android:name="questId"
             app:argType="string" />
 
     </fragment>

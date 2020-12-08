@@ -5,11 +5,10 @@ import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.frankitoo.presentation.R
-import com.frankitoo.presentation.features.weaponlist.WeaponListFragment
 
-fun getGridDecoration(context: Context): RecyclerView.ItemDecoration {
+fun getGridDecoration(spanCount: Int, context: Context): RecyclerView.ItemDecoration {
     return GridSpacingItemDecoration(
-        WeaponListFragment.SPAN_COUNT, context.resources.getDimension(R.dimen.margin_grid).toInt(), false
+        spanCount, context.resources.getDimension(R.dimen.margin_grid).toInt(), false
     )
 }
 

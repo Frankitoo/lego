@@ -1,9 +1,9 @@
-package com.frankitoo.presentation.features.weaponlist
+package com.frankitoo.presentation.features.questlist
 
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.frankitoo.domain.models.lego.weapon.Weapon
+import com.frankitoo.domain.models.lego.quest.Quest
 import com.frankitoo.presentation.R
 import com.frankitoo.presentation.base.BaseFragment
 import com.frankitoo.presentation.utils.LoadingAdapter
@@ -13,44 +13,46 @@ import kotlinx.android.synthetic.main.fragment_list.recyclerView
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class WeaponListFragment : BaseFragment<WeaponListViewModel>() {
+class QuestListFragment : BaseFragment<QuestListViewModel>() {
 
     companion object {
-        const val SPAN_COUNT = 3
+        const val SPAN_COUNT = 2
     }
 
     override val layoutRes: Int = R.layout.fragment_list
 
-    override val viewModel: WeaponListViewModel by viewModel()
+    override val viewModel: QuestListViewModel by viewModel()
 
-    private val weaponListAdapter = PagingGridListAdapter<Weapon>(SPAN_COUNT)
+    private val vehicleListAdapter = PagingGridListAdapter<Quest>(SPAN_COUNT)
 
     override fun setupViews() {
         initAdapter()
     }
 
     private fun initAdapter() {
-        weaponListAdapter.onClickListener =
+        vehicleListAdapter.onClickListener =
             { item ->
                 lifecycleScope.launchWhenCreated {
                     item.id?.let {
-                        findNavController().navigate(WeaponListFragmentDirections.toWeaponDetails(it))
+                        findNavController().navigate(QuestListFragmentDirections.toQuestDetails(it))
                     }
                 }
             }
 
         recyclerView.addItemDecoration(getGridDecoration(SPAN_COUNT, requireContext()))
         recyclerView.layoutManager = GridLayoutManager(activity, SPAN_COUNT)
-        recyclerView.adapter = weaponListAdapter.withLoadStateHeaderAndFooter(
-            header = LoadingAdapter { weaponListAdapter.retry() },
-            footer = LoadingAdapter { weaponListAdapter.retry() }
+        recyclerView.adapter = vehicleListAdapter.withLoadStateHeaderAndFooter(
+            header = LoadingAdapter { vehicleListAdapter.retry() },
+            footer = LoadingAdapter { vehicleListAdapter.retry() }
         )
 
         lifecycleScope.launchWhenStarted {
-            viewModel.fetchWeapons().collectLatest { pagingData ->
-                weaponListAdapter.submitData(pagingData)
+            viewModel.fetchQuests().collectLatest { pagingData ->
+                vehicleListAdapter.submitData(pagingData)
             }
         }
     }
 }
+
+
 
